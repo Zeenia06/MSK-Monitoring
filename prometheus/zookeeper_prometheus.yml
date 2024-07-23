@@ -1,0 +1,21 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'zookeeper'
+    file_sd_configs:
+      - files: 
+        - 'zookeeper_targets.json'
+    static_configs:
+      - labels:
+          env: "dev"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+        
+# schema registry
+# kafka connect
+# ksqldb

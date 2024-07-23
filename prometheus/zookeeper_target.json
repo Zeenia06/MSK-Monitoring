@@ -1,0 +1,23 @@
+[
+  {
+    "labels": {
+       "job": "jmx"
+     },
+     "targets": [
+	"z-1.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"z-2.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"z-3.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001"
+     ]
+  }, 
+  {
+    "labels": {
+       "job": "node"
+    },
+    "targets": [
+       "z-1.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11002",
+       "z-2.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11002",
+       "z-3.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11002"
+    ]
+  }
+]
+    

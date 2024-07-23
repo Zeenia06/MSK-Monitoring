@@ -1,0 +1,25 @@
+[
+  {
+    "labels": {
+       "job": "kafka-broker",
+       "env": "dev"
+     },
+     "targets": [
+	"b-1.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"b-2.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"b-3.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11001"
+     ]
+  }, 
+  {
+    "labels": {
+       "job": "node",
+       "env": "dev"
+    },
+    "targets": [
+       "b-1.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11002",
+       "b-2.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11002",
+       "b-3.monitoringmsk.sn14w3.c18.kafka.us-east-1.amazonaws.com:11002"
+    ]
+  }
+]
+    

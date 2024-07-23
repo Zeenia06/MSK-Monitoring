@@ -1,0 +1,23 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'kafka-broker'
+    #file_sd_configs: 
+    # - files: 
+    #   - 'targets.json'
+    static_configs:
+      - targets: ['b-1.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001','b-2.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001','b-3.monitoringmsk.0s81ih.c18.kafka.us-east-1.amazonaws.com:11001']
+        labels:
+          env: "dev"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+        
+# schema registry
+# kafka connect
+# ksqldb
