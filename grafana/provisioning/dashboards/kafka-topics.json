@@ -90,7 +90,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(kafka_controller_kafkacontroller_globaltopiccount{job=\"kafka-broker\",env=~\"$env\"})",
+          "expr": "sum(kafka_controller_KafkaController_Value{name=\"GlobalTopicCount\",job=\"kafka-broker\",env=~\"$env\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -181,7 +181,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum without(instance) (rate(kafka_server_brokertopicmetrics_messagesinpersec{job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}[5m])))",
+          "expr": "topk(10, sum without(instance) (kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"job=\"MessagesInPerSec\",kafka-broker\",topic=~\"$topic\",env=~\"$env\"}))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -271,7 +271,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum(kafka_log_log_size{job=\"kafka-broker\",env=\"$env\",topic=~\"$topic\"}) by (topic))",
+          "expr": "topk(10, sum(kafka_log_Log_Value{name=\"Size\",job=\"kafka-broker\",env=\"$env\",topic=~\"$topic\"}) by (topic))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -329,7 +329,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(kafka_controller_kafkacontroller_globalpartitioncount{job=\"kafka-broker\",env=~\"$env\"})",
+          "expr": "sum(kafka_controller_KafkaController_Value{name=\"GlobalPartitionCount\",job=\"kafka-broker\",env=~\"$env\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -419,7 +419,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum without(instance) (rate(kafka_server_brokertopicmetrics_bytesinpersec{job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}[5m])))",
+          "expr": "topk(10, sum without(instance) (kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"BytesInPerSec\",job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -508,7 +508,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum without(instance) (rate(kafka_server_brokertopicmetrics_bytesoutpersec{job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}[5m])))",
+          "expr": "topk(10, sum without(instance) (kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"BytesOutPerSec\",job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -599,7 +599,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum(rate(kafka_server_brokertopicmetrics_totalproducerequestspersec{job=\"kafka-broker\", env=\"$env\", topic=~\"$topic\"}[5m])) by (topic))",
+          "expr": "topk(10, sum(kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"TotalProduceRequestsPerSec\",job=\"kafka-broker\", env=\"$env\", topic=~\"$topic\"}) by (topic))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -690,7 +690,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum(rate(kafka_server_brokertopicmetrics_totalfetchrequestspersec{job=\"kafka-broker\", env=\"$env\",topic=~\"$topic\"}[5m])) by (topic))",
+          "expr": "topk(10, sum(kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"TotalFetchRequestsPerSec\",job=\"kafka-broker\", env=\"$env\",topic=~\"$topic\"}) by (topic))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
@@ -808,7 +808,7 @@
           "targets": [
             {
               "exemplar": true,
-              "expr": "kafka_log_log_logstartoffset{job=\"kafka-broker\",env=~\"$env\",topic=~\"$topic\"}",
+              "expr": "kafka_log_Log_Value{name=\"LogStartOffset\",job=\"kafka-broker\",env=~\"$env\",topic=~\"$topic\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -932,7 +932,7 @@
           "targets": [
             {
               "exemplar": true,
-              "expr": "kafka_log_log_logendoffset{job=\"kafka-broker\",env=~\"$env\",topic=~\"$topic\"}",
+              "expr": "kafka_log_Log_Value{name=\"LogEndOffset\",job=\"kafka-broker\",env=~\"$env\",topic=~\"$topic\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1025,7 +1025,7 @@
           ]
         },
         "datasource": "Prometheus",
-        "definition": "label_values(kafka_log_log_size,topic)",
+        "definition": "label_values(kafka_log_Log_Value(name=\"Size\"),topic)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1035,7 +1035,7 @@
         "name": "topic",
         "options": [],
         "query": {
-          "query": "label_values(kafka_log_log_size,topic)",
+          "query": "label_values(kafka_log_Log_Value(name=\"Size\"),topic)",
           "refId": "Prometheus-topic-Variable-Query"
         },
         "refresh": 1,
