@@ -4187,9 +4187,9 @@
           },
           "gridPos": {
             "h": 9,
-            "w": 12,
-            "x": 0,
-            "y": 30
+            "w": 8,
+            "x": 8,
+            "y": 42
           },
           "id": 69,
           "options": {
@@ -4307,9 +4307,9 @@
           },
           "gridPos": {
             "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 30
+            "w": 8,
+            "x": 16,
+            "y": 42
           },
           "id": 70,
           "options": {
@@ -4429,7 +4429,7 @@
             "h": 9,
             "w": 8,
             "x": 0,
-            "y": 39
+            "y": 51
           },
           "id": 71,
           "options": {
@@ -4550,7 +4550,7 @@
             "h": 9,
             "w": 8,
             "x": 8,
-            "y": 39
+            "y": 51
           },
           "id": 72,
           "options": {
@@ -4671,7 +4671,7 @@
             "h": 9,
             "w": 8,
             "x": 16,
-            "y": 39
+            "y": 51
           },
           "id": 73,
           "options": {
@@ -6757,27 +6757,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": ".*",
-        "current": {},
-        "datasource": "Prometheus",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Consumer Group",
-        "multi": true,
-        "name": "consumer_group",
-        "options": [],
-        "query": "query_result(kafka_consumer_group_ConsumerLagMetrics_Value,groupId)",
-        "refresh": 1,
-        "regex": "/.*groupId=\"([^\"]*).*/",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
