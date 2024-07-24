@@ -99,7 +99,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total # of Topics",
+      "title": "Total Number of Topics",
       "type": "stat"
     },
     {
@@ -1025,7 +1025,7 @@
           ]
         },
         "datasource": "Prometheus",
-        "definition": "label_values(kafka_log_Log_Value(name=\"Size\"),topic)",
+        "definition": "label_values(kafka_log_Log_Value{name=\"Size\"},topic)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1035,7 +1035,7 @@
         "name": "topic",
         "options": [],
         "query": {
-          "query": "label_values(kafka_log_Log_Value(name=\"Size\"),topic)",
+          "query": "label_values(kafka_log_Log_Value{name=\"Size\"},topic)",
           "refId": "Prometheus-topic-Variable-Query"
         },
         "refresh": 1,
