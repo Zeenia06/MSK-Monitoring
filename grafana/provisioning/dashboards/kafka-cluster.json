@@ -6595,7 +6595,7 @@
           "fill": 1,
           "gridPos": {
             "h": 8,
-            "w": 12,
+            "w": 24,
             "x": 0,
             "y": 41
           },
@@ -6625,7 +6625,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(kafka_consumer_group_ConsumerLagMetrics_Value{name=\"SumOffsetLag\",groupId=~\"$consumer_group\"})",
+              "expr": "avg(kafka_consumer_group_ConsumerLagMetrics_Value{name=\"SumOffsetLag\",job=\"kafka-broker\",env=\"$env\", instance=~\"$instance\",groupId=~\"$consumer_group\"})",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -6642,7 +6642,7 @@
             "sort": 0,
             "value_type": "individual"
           },
-          "type": "graph",
+          "type": "time_series",
           "xaxis": {
             "buckets": null,
             "mode": "time",
@@ -7058,14 +7058,14 @@
           ]
         },
         "datasource": "Prometheus",
-        "definition": "label_values(kafka_consumer_group_ConsumerLagMetrics_Value)",
+        "definition": "label_values(kafka_consumer_group_ConsumerLagMetrics_Value,groupId)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Consumer Group",
         "multi": true,
-        "name": "groupId",
+        "name": "group",
         "options": [],
         "query": {
           "query": "label_values(kafka_consumer_group_ConsumerLagMetrics_Value)",
