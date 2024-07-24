@@ -181,7 +181,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(10, sum without(instance) (kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"job=\"MessagesInPerSec\",kafka-broker\",topic=~\"$topic\",env=~\"$env\"}))",
+          "expr": "topk(10, sum without(instance) (kafka_server_BrokerTopicMetrics_FiveMinuteRate{name=\"MessagesInPerSec\",job=\"kafka-broker\",topic=~\"$topic\",env=~\"$env\"}))",
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
