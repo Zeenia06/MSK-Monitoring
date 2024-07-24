@@ -884,6 +884,97 @@
       "type": "stat"
     },
     {
+      "datasource": "Prometheus",
+      "description": "Current Log Size per Topic",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "6.6.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(kafka_log_Log_Value{name=\"Size\",job=\"kafka-broker\",env=\"$env\",topic=~\"$topic\"}) by (topic)",
+          "interval": "",
+          "legendFormat": "{{topic}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Log size Per Topic",
+      "type": "timeseries"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -6549,29 +6640,29 @@
         "useTags": false
       },
       {
-        "allValue": "",
+        "allValue": null,
         "current": {
           "selected": true,
           "text": [
-            "0.95"
+            "All"
           ],
           "value": [
-            "0.95"
+            "$__all"
           ]
         },
         "datasource": "Prometheus",
-        "definition": "label_values(quantile)",
+        "definition": "label_values(kafka_log_Log_Value{name=\"Size\"},topic)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": "Percentile",
+        "label": "Topic name",
         "multi": true,
-        "name": "percentile",
+        "name": "topic",
         "options": [],
         "query": {
-          "query": "label_values(quantile)",
-          "refId": "Prometheus-percentile-Variable-Query"
+          "query": "label_values(kafka_log_Log_Value{name=\"Size\"},topic)",
+          "refId": "Prometheus-topic-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
