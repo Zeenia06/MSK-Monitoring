@@ -6,9 +6,9 @@
        "cluster": "monitoring-msk"
      },
      "targets": [
-	"b-1.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11001", 
-	"b-2.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11001", 
-	"b-3.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11001"
+	"b-1.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"b-2.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11001", 
+	"b-3.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11001"
      ]
   }, 
   {
@@ -18,9 +18,9 @@
        "cluster": "monitoring-msk"
     },
     "targets": [
-       "b-1.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11002",
-       "b-2.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11002",
-       "b-3.monitoringmsk.1bhkse.c18.kafka.us-east-1.amazonaws.com:11002"
+       "b-1.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11002",
+       "b-2.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11002",
+       "b-3.monitoringmsk.a2801f.c18.kafka.us-east-1.amazonaws.com:11002"
     ]
   }
 ]
