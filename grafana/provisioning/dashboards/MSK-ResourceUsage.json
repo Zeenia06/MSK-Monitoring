@@ -2025,7 +2025,7 @@
         "name": "producer_client_id",
         "options": [],
         "query": {
-          "query": "label_values(kafka_server_Produce_byte_rate)",
+          "query": "label_values(kafka_server_Produce_byte_rate,client_id)",
           "refId": "Prometheus-producer-client_id-Variable-Query"
         },
         "refresh": 1,
@@ -2059,7 +2059,7 @@
         "name": "consumer_client_id",
         "options": [],
         "query": {
-          "query": "label_values(kafka_server_Fetch_byte_rate)",
+          "query": "label_values(kafka_server_Fetch_byte_rate,client_id)",
           "refId": "Prometheus-consumer-client_id-Variable-Query"
         },
         "refresh": 1,
