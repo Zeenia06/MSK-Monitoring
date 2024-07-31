@@ -980,7 +980,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "(sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\", cluster=~\"$cluster\"}[1h])) / $convert_to_GB / $Month",
+          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\", cluster=~\"$cluster\"}[1h])) / $convert_to_GB / $Month",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
