@@ -13,7 +13,7 @@ scrape_configs:
     static_configs:
       - labels:
           env: "dev"
-          __name__: "availability_zone_cost"
+          __name__: "availabitity_zone_cost"
           region: "us-east-1"
           src_availability_zone: "us-east-1f"
           dest_availability_zone: "us-east-1b"
