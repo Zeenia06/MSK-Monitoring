@@ -1,0 +1,9 @@
+groups:
+  - name: "Cross - Zone data transfer Charges"
+    rules:
+      - record: "consumer_client_byte_rate"
+        expr: "sum(rate(kafka_server_Fetch_byte_rate{client_id!~\"^consumer-amazon.msk.*\",job=\"kafka-broker\",instance=~\"$instance\",env=\"$env\"}[5m])) by (region,dest_availability_zone)"
+      - record: "producer_client_byte_rate"
+        expr: "sum(rate(kafka_server_Produce_byte_rate{client_id!~\"^producer.*\",job=\"kafka-broker\",instance=~\"$instance\",env=\"$env\"}[5m])) by (region,src_availability_zone)"
+      - record: "cross_zone_transfer_cost"
+        expr: "(consumer_client_byte_rate + producer_client_byte_rate) * on(region,dest_availabiltiy_zone) group_left() availabitity_zone_cost"
