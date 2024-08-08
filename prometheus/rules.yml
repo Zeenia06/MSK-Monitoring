@@ -44,5 +44,5 @@ groups:
       - record: cross_zone_outbound_charges
         expr: |
           sum by (dest_availability_zone,region,src_availability_zone) (
-          outbound_charges * cross_zone_data_transfer_inbound{client_id="client-1"}
+          outbound_charges * cross_zone_data_transfer_outbound{client_id="client-1"}
           )

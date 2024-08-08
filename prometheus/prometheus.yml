@@ -35,7 +35,7 @@ scrape_configs:
       - source_labels: [__name__]
         regex: 'kafka_server_Produce_byte_rate'
         target_label: dest_availability_zone
-        replacement: 'us-east-1b'
+        replacement: 'us-east-1a'
         action: replace
       - source_labels: [__name__]
         regex: 'kafka_server_Fetch_byte_rate'
@@ -50,7 +50,7 @@ scrape_configs:
       - source_labels: [ __name__ ]
         regex: 'kafka_server_Fetch_byte_rate'
         target_label: dest_availability_zone
-        replacement: 'us-east-1b'
+        replacement: 'us-east-1a'
 
   - job_name: 'zookeeper'
     file_sd_configs:
