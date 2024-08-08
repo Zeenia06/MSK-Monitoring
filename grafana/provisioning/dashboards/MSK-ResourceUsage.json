@@ -18,1122 +18,17 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
-      },
-      "id": 35,
-      "title": "Cost Per Instance",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 1
-      },
-      "id": 26,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Name",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.816",
-          "hide": false,
-          "refId": "Cost-",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Cost per instance",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 1
-      },
-      "id": 28,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(instance) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) * ($GB_Month*24) / $convert_to_GB",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{Instance}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.060",
-          "hide": false,
-          "refId": "Cost-",
-          "type": "math"
-        }
-      ],
-      "title": "Tiered Storage Cost per Instance ",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 9
-      },
-      "id": 34,
-      "panels": [],
-      "title": "Cost Per Client",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 10
-      },
-      "id": 36,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(client_id) (rate(kafka_server_Fetch_byte_rate{client_id=~\"$consumer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{client_id}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(client_id) (rate(kafka_server_Produce_byte_rate{client_id=~\"$producer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.10",
-          "hide": false,
-          "refId": "ConsumerClient-cost",
-          "type": "math"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$B * 0.10",
-          "hide": false,
-          "refId": "ProducerClient-Cost",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Cost Per Client",
-      "type": "timeseries"
-    },
-    {
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 33,
-      "title": "Cost Per Partition",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 19
-      },
-      "id": 25,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\",partition=~\"$partition\"}[1h])) / $convert_to_GB / $GB_Month",
-          "instant": false,
-          "legendFormat": "{{topic}} @ partition-{{partition}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.10",
-          "hide": false,
-          "refId": "B",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Cost Per  Partition ",
-      "type": "timeseries"
-    },
-    {
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 27
-      },
-      "id": 32,
-      "title": "Cost Per Topic",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "stepBefore",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 28
-      },
-      "id": 24,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{topic}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.10",
-          "hide": false,
-          "refId": "Cost-",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Cost Per Topic ",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 28
-      },
-      "id": 27,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", topic=~\"$topic\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{topic}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.060",
-          "hide": false,
-          "refId": "B",
-          "type": "math"
-        }
-      ],
-      "title": "Tiered Storage Cost per Topic",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 36
-      },
-      "id": 31,
-      "panels": [],
-      "title": "Cost Center",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 37
-      },
-      "id": 29,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\", name=\"LeaderCount\"}) * $GB_Month",
-          "format": "time_series",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.816",
-          "hide": false,
-          "refId": "Cost",
-          "type": "math"
-        }
-      ],
-      "title": "Instance charge monthly",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "MiBs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 37
-      },
-      "id": 37,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesInPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"b-1.monitoringmsk.wlkexu.c18.kafka.us-east-1.amazonaws.com\"}[1m])) / 1024 / 1024",
-          "fullMetaSearch": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "Total_inbound",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"b-1.monitoringmsk.wlkexu.c18.kafka.us-east-1.amazonaws.com\"}[1m])) / 1024 / 1024",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "Total_outbound",
-          "range": true,
-          "refId": "B",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A + $B",
-          "hide": false,
-          "refId": "Total",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Provision Throughput (MiB/s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 45
-      },
-      "id": 38,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB",
-          "fullMetaSearch": true,
-          "hide": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "Byter Out",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.09",
-          "hide": false,
-          "refId": "Cost-",
-          "type": "math"
-        }
-      ],
-      "title": "Outbound Charges (monthly)",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 53
       },
       "id": 22,
       "panels": [],
@@ -1171,7 +66,7 @@
         "h": 7,
         "w": 5,
         "x": 0,
-        "y": 54
+        "y": 1
       },
       "id": 18,
       "options": {
@@ -1241,7 +136,7 @@
         "h": 7,
         "w": 5,
         "x": 5,
-        "y": 54
+        "y": 1
       },
       "id": 17,
       "options": {
@@ -1306,7 +201,7 @@
         "h": 14,
         "w": 7,
         "x": 10,
-        "y": 54
+        "y": 1
       },
       "id": 20,
       "options": {
@@ -1397,7 +292,7 @@
         "h": 14,
         "w": 7,
         "x": 17,
-        "y": 54
+        "y": 1
       },
       "id": 19,
       "options": {
@@ -1478,7 +373,7 @@
         "h": 7,
         "w": 5,
         "x": 0,
-        "y": 61
+        "y": 8
       },
       "id": 16,
       "options": {
@@ -1548,7 +443,7 @@
         "h": 7,
         "w": 5,
         "x": 5,
-        "y": 61
+        "y": 8
       },
       "id": 15,
       "options": {
@@ -1605,6 +500,8 @@
             }
           },
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "unit": "decgbytes"
         },
         "overrides": []
@@ -1613,7 +510,7 @@
         "h": 12,
         "w": 8,
         "x": 0,
-        "y": 68
+        "y": 15
       },
       "id": 23,
       "options": {
@@ -1664,7 +561,7 @@
             "type": "__expr__",
             "uid": "__expr__"
           },
-          "expression": "300 - $TotalStorage",
+          "expression": "(300*1.07374) - $TotalStorage",
           "hide": false,
           "refId": "Remaining Storage",
           "type": "math"
@@ -1699,7 +596,7 @@
         "h": 12,
         "w": 8,
         "x": 8,
-        "y": 68
+        "y": 15
       },
       "id": 21,
       "options": {
@@ -1805,7 +702,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "GBs"
         },
         "overrides": []
       },
@@ -1813,7 +710,7 @@
         "h": 12,
         "w": 8,
         "x": 16,
-        "y": 68
+        "y": 15
       },
       "id": 14,
       "options": {
@@ -1838,7 +735,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "sum by(client_id) (rate(kafka_server_Fetch_byte_rate{client_id=~\"$consumer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -1875,7 +772,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 80
+        "y": 27
       },
       "id": 13,
       "panels": [],
@@ -1939,7 +836,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 81
+        "y": 28
       },
       "id": 12,
       "options": {
@@ -2063,7 +960,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 81
+        "y": 28
       },
       "id": 10,
       "options": {
@@ -2154,7 +1051,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 92
+        "y": 39
       },
       "id": 11,
       "options": {
@@ -2239,7 +1136,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 92
+        "y": 39
       },
       "id": 9,
       "options": {
@@ -2276,7 +1173,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) / $convert_to_GB",
+          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[24h])) * $Days / $convert_to_GB",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -2296,7 +1193,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 103
+        "y": 50
       },
       "id": 8,
       "panels": [],
@@ -2370,7 +1267,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 104
+        "y": 51
       },
       "id": 7,
       "options": {
@@ -2472,7 +1369,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 104
+        "y": 51
       },
       "id": 6,
       "options": {
@@ -2497,7 +1394,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(partition, topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", instance=~\"$instance\", env=~\"dev\", topic=~\"$topic\",partition=~\"$partition\"}[1h]))/$convert_to_GB",
+          "expr": "sum by(partition, topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", instance=~\"$instance\", env=~\"dev\", topic=~\"$topic\",partition=~\"$partition\"}[24h])) * $Days /$convert_to_GB",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -2516,7 +1413,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 112
+        "y": 59
       },
       "id": 5,
       "panels": [],
@@ -2570,8 +1467,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2587,7 +1483,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 113
+        "y": 60
       },
       "id": 4,
       "options": {
@@ -2675,8 +1571,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2692,7 +1587,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 113
+        "y": 60
       },
       "id": 3,
       "options": {
@@ -2720,7 +1615,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\"}[1h])) * $GB_Month",
+          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\"}[1h]))* $Days * $GB_Month",
           "fullMetaSearch": true,
           "includeNullMetadata": true,
           "instant": false,
@@ -2780,8 +1675,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2797,7 +1691,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 121
+        "y": 68
       },
       "id": 2,
       "options": {
@@ -2882,8 +1776,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2899,7 +1792,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 121
+        "y": 68
       },
       "id": 1,
       "options": {
@@ -2925,7 +1818,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\"}[1h])) / $convert_to_GB",
+          "expr": "sum by(topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\"}[24h])) * $Days / $convert_to_GB",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -2947,7 +1840,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "dev"
           ],
@@ -2981,7 +1874,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3015,7 +1908,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3049,7 +1942,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3083,7 +1976,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3117,12 +2010,14 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "All"
+            "client-1",
+            "msk-client-1"
           ],
           "value": [
-            "$__all"
+            "client-1",
+            "msk-client-1"
           ]
         },
         "datasource": {
@@ -3151,12 +2046,12 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "All"
+            "msk-client-1"
           ],
           "value": [
-            "$__all"
+            "msk-client-1"
           ]
         },
         "datasource": {
@@ -3193,7 +2088,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "30"
           ],
@@ -3259,6 +2154,26 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "1",
+          "value": "1"
+        },
+        "hide": 0,
+        "label": "Days",
+        "name": "Days",
+        "options": [
+          {
+            "selected": true,
+            "text": "1",
+            "value": "1"
+          }
+        ],
+        "query": "1",
+        "skipUrlSync": false,
+        "type": "textbox"
       }
     ]
   },
@@ -3270,6 +2185,6 @@
   "timezone": "",
   "title": "MSK_ResourceUsage",
   "uid": "d6e43110-cfe7-46d6-8343-e9f93fd8091a",
-  "version": 9,
+  "version": 3,
   "weekStart": ""
 }

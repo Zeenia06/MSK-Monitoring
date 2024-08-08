@@ -1,26 +1,48 @@
 groups:
   - name: "Cross-Zone Data Transfer Charges"
     rules:
-#      - record: consumer_client_byte_rate
-#        expr: sum(rate(kafka_server_Fetch_byte_rate{client_id!~"^consumer-amazon.msk.*", job="kafka-broker", instance=~"$instance", env="$env"}[5m])) by (client_id)
-#
-#      - record: producer_client_byte_rate
-#        expr: sum(rate(kafka_server_Produce_byte_rate{client_id!~"^producer.*", job="kafka-broker", instance=~"$instance", env="$env"}[5m])) by (client_id)
+      - record: cross_zone_data_transfer_inbound
+        expr: sum by (client_id,region,src_availability_zone,dest_availability_zone) (rate(kafka_server_Fetch_byte_rate{client_id="msk-client-1",env="dev",job="kafka-broker",region="us-east-1"}[5m]))
 
-      - record: cross_zone_transfer_cost
+      - record: cross_zone_inbound_comparison
         expr: |
-          sum by (region, src_availability_zone, dest_availability_zone) (
-            (
-              sum(rate(kafka_server_Fetch_byte_rate{client_id!~"^consumer-amazon.msk.*", job="kafka-broker", instance=~"$instance", env="$env"}[5m]))
-              +
-              sum(rate(kafka_server_Produce_byte_rate{client_id!~"^producer.*", job="kafka-broker", instance=~"$instance", env="$env"}[5m]))
-            )
-            *
-            (
-              (region == "us-east-1" and src_availability_zone == "us-east-1a" and dest_availability_zone == "us-east-1b" * 0.01) 
-            )
-          )
+          label_replace(label_replace(cross_zone_data_transfer_inbound, "is_cross_zone","1", "src_availability_zone","(.*)"),"is_cross_zone","0","dest_availability_zone","$1")
+
+      - record: inbound_charges
+        expr: |
+          (vector(0.01) and on() (cross_zone_inbound_comparison{is_cross_zone="1"}))
         labels:
+          client_id: "msk-client-1"
           region: "us-east-1"
           src_availability_zone: "us-east-1a"
           dest_availability_zone: "us-east-1b"
+
+      - record: cross_zone_inbound_charges
+        expr: |
+          sum by (dest_availability_zone,region,src_availability_zone) (
+          inbound_charges * cross_zone_data_transfer_inbound{client_id="msk-client-1"}
+          )
+      
+#    ------------- OUTBOUND CHARGES --------------------- #
+
+      - record: cross_zone_data_transfer_outbound
+        expr: sum by(client_id,region,src_availability_zone,dest_availability_zone)(rate(kafka_server_Produce_byte_rate{client_id=~'client-1',env="dev",job="kafka-broker",cluster=~'monitoring-msk'}[5m]))
+
+      - record: cross_zone_outbound_comparison
+        expr: |
+          label_replace(label_replace(cross_zone_data_transfer_outbound, "is_cross_zone","1", "src_availability_zone","(.*)"),"is_cross_zone","0","dest_availability_zone","$1")
+
+      - record: outbound_charges
+        expr: |
+          (vector(0.01) and on() (cross_zone_outbound_comparison{is_cross_zone="1"}))
+        labels:
+          client_id: "client-1"
+          region: "us-east-1"
+          src_availability_zone: "us-east-1a"
+          dest_availability_zone: "us-east-1b"
+
+      - record: cross_zone_outbound_charges
+        expr: |
+          sum by (dest_availability_zone,region,src_availability_zone) (
+          outbound_charges * cross_zone_data_transfer_inbound{client_id="client-1"}
+          )

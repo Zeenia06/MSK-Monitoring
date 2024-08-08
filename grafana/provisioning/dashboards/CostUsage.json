@@ -18,10 +18,21 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 13,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 14,
+      "title": "Cost Center",
+      "type": "row"
+    },
     {
       "datasource": {
         "type": "prometheus",
@@ -53,7 +64,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 13,
       "options": {
@@ -119,7 +130,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 0
+        "y": 1
       },
       "id": 12,
       "options": {
@@ -218,7 +229,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 1
       },
       "id": 8,
       "options": {
@@ -242,7 +253,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB",
+          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB / $GB_Month",
           "hide": true,
           "instant": false,
           "legendFormat": "Bytes Out",
@@ -328,13 +339,15 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 11,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -386,7 +399,7 @@
           },
           "expression": "$A * 0.10",
           "hide": false,
-          "refId": "Consumer Client Cost",
+          "refId": "Consumer Client Cost-",
           "type": "math"
         },
         {
@@ -397,7 +410,7 @@
           },
           "expression": "$B * 0.10",
           "hide": false,
-          "refId": "Producer Client Cost",
+          "refId": "Producer Client Cost-",
           "type": "math"
         }
       ],
@@ -468,7 +481,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 7
+        "y": 8
       },
       "id": 7,
       "options": {
@@ -583,7 +596,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 10,
       "options": {
@@ -634,130 +647,11 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 15
-      },
-      "id": 9,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesInPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"$instance\"}[1m])) / 1024 / 1024",
-          "instant": false,
-          "legendFormat": "total_inbound",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"$instance\"}[1m])) / 1024 / 1024",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "total_outbound",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A + $B",
-          "hide": false,
-          "refId": "Total",
-          "type": "math"
-        }
-      ],
-      "title": "Provision Storage Throughput charges (monthly)",
-      "type": "timeseries"
-    },
-    {
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 6,
       "title": "Instance",
@@ -810,8 +704,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -827,13 +720,15 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 4,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -918,8 +813,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -935,13 +829,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 25
       },
       "id": 5,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -984,7 +880,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 33
       },
       "id": 3,
       "title": "Topic",
@@ -1037,8 +933,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1053,7 +948,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 34
       },
       "id": 2,
       "options": {
@@ -1075,7 +970,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", topic=~\"$topic\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
+          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", topic=~\"$topic\", instance=~\"$instance\"}[1h])) * $GB_Month / $convert_to_GB ",
           "instant": false,
           "legendFormat": "{{topic}}",
           "range": true,
@@ -1143,8 +1038,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1160,13 +1054,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 34
       },
       "id": 1,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -1216,13 +1112,10 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": [
-            "dev"
-          ],
-          "value": [
-            "dev"
-          ]
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1312,13 +1205,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "monitoring-msk"
-          ],
-          "value": [
-            "monitoring-msk"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1384,7 +1273,7 @@
           "type": "prometheus",
           "uid": "PBFA97CFB590B2093"
         },
-        "definition": "label_values(kafka_server_Produce_byte_rate,clientId)",
+        "definition": "label_values(kafka_server_Produce_byte_rate,client_id)",
         "hide": 0,
         "includeAll": true,
         "label": "Producer Client ID",
@@ -1393,7 +1282,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kafka_server_Produce_byte_rate,clientId)",
+          "query": "label_values(kafka_server_Produce_byte_rate,client_id)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1404,15 +1293,19 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
           "uid": "PBFA97CFB590B2093"
         },
-        "definition": "label_values(kafka_server_Fetch_byte_rate,clientId)",
+        "definition": "label_values(kafka_server_Fetch_byte_rate,client_id)",
         "hide": 0,
         "includeAll": true,
         "label": "Consumer Client ID",
@@ -1421,7 +1314,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kafka_server_Fetch_byte_rate,clientId)",
+          "query": "label_values(kafka_server_Fetch_byte_rate,client_id)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1512,13 +1405,13 @@
     ]
   },
   "time": {
-    "from": "2024-08-04T21:50:41.118Z",
-    "to": "2024-08-05T09:50:41.118Z"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Cost Center",
   "uid": "ba796e30-e406-42b6-8f21-8ff3793fece2",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }

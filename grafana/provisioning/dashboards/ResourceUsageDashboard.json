@@ -18,116 +18,17 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 14,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 8,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "sum by(BrokerId) (rate(kafka_server_forwarding_metrics_incoming_byte_rate{job=\"kafka-broker\", env=~\"$env\", instance=~\"$instance\", BrokerId=~\"1|3|2\"}[5m]))",
-          "fullMetaSearch": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "brokerId- {{BrokerId}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Panel Title",
-      "type": "timeseries"
-    },
     {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 0
       },
       "id": 7,
       "panels": [],
@@ -200,7 +101,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 1
       },
       "id": 6,
       "options": {
@@ -295,7 +196,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 1
       },
       "id": 5,
       "options": {
@@ -321,15 +222,43 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum(java_lang_Memory_NonHeapMemoryUsage_used{job=\"kafka-broker\", env=~\"$env\", instance=~\"$instance\"}) / sum(java_lang_Memory_HeapMemoryUsage_max{job=\"kafka-broker\", env=~\"$env\",instance=~\"$instance\"})",
+          "expr": "sum(java_lang_Memory_HeapMemoryUsage_used{job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\"}) + sum(java_lang_Memory_NonHeapMemoryUsage_used{job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\"})",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "Memory used",
+          "legendFormat": "Used",
           "range": true,
-          "refId": "A",
+          "refId": "used_memory",
           "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "sum(java_lang_Memory_HeapMemoryUsage_committed{job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\"}) + sum(java_lang_Memory_NonHeapMemoryUsage_committed{job=\"kafka-broker\", instance=~\"$instance\", env=\"dev\"})",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Commit",
+          "range": true,
+          "refId": "memory_commit",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$used_memory/$memory_commit",
+          "hide": true,
+          "refId": "A",
+          "type": "math"
         },
         {
           "datasource": {
@@ -339,7 +268,7 @@
           },
           "expression": "$A * 100",
           "hide": false,
-          "refId": "Memory Used ",
+          "refId": "Utilized",
           "type": "math"
         }
       ],
@@ -410,7 +339,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 9
       },
       "id": 4,
       "options": {
@@ -459,7 +388,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 17
       },
       "id": 3,
       "panels": [],
@@ -516,7 +445,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -532,7 +462,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 18
       },
       "id": 2,
       "options": {
@@ -624,7 +554,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#299c46",
@@ -648,7 +579,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 18
       },
       "id": 1,
       "options": {
@@ -824,17 +755,73 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "client-1"
+          ],
+          "value": [
+            "client-1"
+          ]
+        },
+        "definition": "label_values(kafka_server_Produce_byte_rate,client_id)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Producer Client ID",
+        "multi": true,
+        "name": "producer_client_id",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kafka_server_Produce_byte_rate,client_id)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "consumer-amazon.msk.canary.group.broker-1-264"
+          ],
+          "value": [
+            "consumer-amazon.msk.canary.group.broker-1-264"
+          ]
+        },
+        "definition": "label_values(kafka_server_Fetch_byte_rate,client_id)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Consumer Client ID",
+        "multi": true,
+        "name": "consumer_client_id",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kafka_server_Fetch_byte_rate,client_id)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "ResourceUSage Percent",
+  "title": "Cluster Utilization",
   "uid": "fdbc3a50-deb0-4542-8097-8e21ae5c4831",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }
