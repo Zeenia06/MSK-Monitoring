@@ -19,7 +19,7 @@ groups:
 
       - record: cross_zone_inbound_charges
         expr: |
-          sum by (dest_availability_zone,region,src_availability_zone) (
+          sum by (dest_availability_zone,region,src_availability_zone,client_id) (
           inbound_charges * cross_zone_data_transfer_inbound{client_id="msk-client-1"}
           )
       
@@ -43,6 +43,6 @@ groups:
 
       - record: cross_zone_outbound_charges
         expr: |
-          sum by (dest_availability_zone,region,src_availability_zone) (
+          sum by (dest_availability_zone,region,src_availability_zone,client_id) (
           outbound_charges * cross_zone_data_transfer_outbound{client_id="client-1"}
           )
