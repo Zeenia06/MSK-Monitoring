@@ -78,7 +78,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$Instance\", cluster=~\"$Cluster\", name=\"LeaderCount\"})",
+          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\", name=\"LeaderCount\"})",
           "instant": false,
           "legendFormat": "{{name}}",
           "range": true,
@@ -242,7 +242,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$Cluster\"}[1m])) / $Convert_to_GB",
+          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB",
           "hide": true,
           "instant": false,
           "legendFormat": "Bytes Out",
@@ -351,7 +351,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(client_id) (rate(kafka_server_Fetch_byte_rate{client_id=~\"$Consumer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$Instance\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(client_id) (rate(kafka_server_Fetch_byte_rate{client_id=~\"$consumer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
@@ -368,7 +368,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(client_id) (rate(kafka_server_Produce_byte_rate{client_id=~\"$Producer_Client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$Instance\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(client_id) (rate(kafka_server_Produce_byte_rate{client_id=~\"$producer_client_id\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
@@ -493,7 +493,7 @@
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$Instance\", cluster=~\"$Cluster\", name=\"LeaderCount\"}) * $GB_Month",
+          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\", name=\"LeaderCount\"}) * $GB_Month",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
@@ -608,7 +608,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$Instance\", topic=~\"$topic\", partition=~\"$partition\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\", partition=~\"$partition\"}[1h])) / $convert_to_GB / $GB_Month",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
@@ -718,7 +718,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesInPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"b-1.monitoringmsk.wlkexu.c18.kafka.us-east-1.amazonaws.com\"}[1m])) / 1024 / 1024",
+          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesInPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"$instance\"}[1m])) / 1024 / 1024",
           "instant": false,
           "legendFormat": "total_inbound",
           "range": true,
@@ -730,7 +730,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"b-1.monitoringmsk.wlkexu.c18.kafka.us-east-1.amazonaws.com\"}[1m])) / 1024 / 1024",
+          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", instance=~\"$instance\"}[1m])) / 1024 / 1024",
           "hide": false,
           "instant": false,
           "legendFormat": "total_outbound",
@@ -849,7 +849,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(instance) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) / $convert_to_GB / $GB_Month",
           "hide": true,
           "instant": false,
           "legendFormat": "{{instance}}",
@@ -957,7 +957,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum by(instance) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) * $GB_Month / $Convert_to_GB",
+          "expr": "sum by(instance) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\"}[1h])) * $GB_Month / $convert_to_GB",
           "hide": true,
           "instant": false,
           "legendFormat": "{{instance}}",
@@ -1075,7 +1075,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", topic=~\"$topic\", instance=~\"$instance\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(topic) (rate(kafka_server_BrokerTopicAggregatedMetrics_Value{name=\"RemoteLogSizeBytes\", job=\"kafka-broker\", env=\"dev\", topic=~\"$topic\", instance=~\"$instance\"}[1h])) / $convert_to_GB / $GB_Month",
           "instant": false,
           "legendFormat": "{{topic}}",
           "range": true,
@@ -1183,7 +1183,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "sum by(topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"$env\", instance=~\"$Instance\", topic=~\"$topic\"}[1h])) / $Convert_to_GB / $GB_Month",
+          "expr": "sum by(topic) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"$env\", instance=~\"$instance\", topic=~\"$topic\"}[1h])) / $convert_to_GB / $GB_Month",
           "fullMetaSearch": false,
           "hide": true,
           "includeNullMetadata": true,
@@ -1329,7 +1329,7 @@
         "includeAll": true,
         "label": "Cluster",
         "multi": true,
-        "name": "Cluster",
+        "name": "cluster",
         "options": [],
         "query": {
           "qryType": 1,
@@ -1361,7 +1361,7 @@
         "includeAll": true,
         "label": "Instance",
         "multi": true,
-        "name": "Instance",
+        "name": "instance",
         "options": [],
         "query": {
           "qryType": 1,
@@ -1389,7 +1389,7 @@
         "includeAll": true,
         "label": "Producer Client ID",
         "multi": true,
-        "name": "Producer_Client_id",
+        "name": "producer_client_id",
         "options": [],
         "query": {
           "qryType": 1,
@@ -1417,7 +1417,7 @@
         "includeAll": true,
         "label": "Consumer Client ID",
         "multi": true,
-        "name": "Consumer_client_id",
+        "name": "consumer_client_id",
         "options": [],
         "query": {
           "qryType": 1,
@@ -1433,7 +1433,7 @@
       {
         "hide": 2,
         "label": "convert_to_GB",
-        "name": "Convert_to_GB",
+        "name": "convert_to_GB",
         "query": "1073741824",
         "skipUrlSync": false,
         "type": "constant"
@@ -1517,7 +1517,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "New dashboard",
+  "title": "Cost Center",
   "uid": "ba796e30-e406-42b6-8f21-8ff3793fece2",
   "version": 1,
   "weekStart": ""
