@@ -13,14 +13,19 @@ scrape_configs:
     static_configs:
       - labels:
           env: "dev"
-          region: "us-east-1"
-          src_availability_zone: "us-east-1f"
-          dest_availability_zone: "us-east-1b"
     relabel_configs:
       - source_labels: [__address__]
         target_label: instance
         regex: '([^:]+)(:[0-9]+)?'
         replacement: '${1}'
+    metric_relabel_configs:
+      - source_labels: ['cluster', 'client_id']
+        target_label: region
+      - source_labels: ['cluster', 'client_id']
+        target_label: src_avialability_zone
+      - source_labels: ['cluster', 'client_id']
+        target_label: dest_avialability_zone
+
 
   - job_name: 'zookeeper'
     file_sd_configs:
@@ -34,7 +39,4 @@ scrape_configs:
         target_label: instance
         regex: '([^:]+)(:[0-9]+)?'
         replacement: '${1}'
-        
-# schema registry
-# kafka connect
-# ksqldb
+
