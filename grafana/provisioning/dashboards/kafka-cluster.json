@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 721,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1703,7 +1703,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1860,7 +1861,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2007,7 +2009,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2108,7 +2111,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2214,7 +2218,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2318,7 +2323,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2422,7 +2428,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2527,7 +2534,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2630,7 +2638,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2733,7 +2742,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2838,7 +2848,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2970,7 +2981,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3071,7 +3083,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3079,7 +3092,7 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -3113,9 +3126,11 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "1 - kafka_server_KafkaRequestHandlerPool_Count{name=\"RequestHandlerAvgIdlePercent\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\"}",
+          "editorMode": "code",
+          "expr": "100 - kafka_server_KafkaRequestHandlerPool_Count{name=\"RequestHandlerAvgIdlePercent\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3197,7 +3212,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3348,7 +3364,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3451,7 +3468,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3553,7 +3571,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3655,7 +3674,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4942,7 +4962,7 @@
       "type": "timeseries"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -4954,736 +4974,7 @@
         "y": 138
       },
       "id": 68,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 0,
-            "y": 30
-          },
-          "id": 69,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "Consumer - RequestQueueTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 30
-          },
-          "id": 70,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "Consumer - LocalTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 0,
-            "y": 39
-          },
-          "id": 71,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "Consumer - RemoteTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 8,
-            "y": 39
-          },
-          "id": 72,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "Consumer - ResponseQueueTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 16,
-            "y": 39
-          },
-          "id": 73,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "Consumer - ResponseSendTimeMs",
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "targets": [
         {
           "datasource": {
@@ -5697,7 +4988,760 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 139
+      },
+      "id": 69,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "Consumer - RequestQueueTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 139
+      },
+      "id": 70,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "Consumer - LocalTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 148
+      },
+      "id": 71,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "Consumer - RemoteTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 148
+      },
+      "id": 72,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "Consumer - ResponseQueueTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 148
+      },
+      "id": 73,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"Fetch\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "Consumer - ResponseSendTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
       "datasource": {
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
@@ -5706,739 +5750,10 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 157
       },
       "id": 66,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 0,
-            "y": 31
-          },
-          "id": 74,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "FetchFollower - RequestQueueTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 12,
-            "x": 12,
-            "y": 31
-          },
-          "id": 75,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "FetchFollower - LocalTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 0,
-            "y": 40
-          },
-          "id": 76,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "FetchFollower - RemoteTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 8,
-            "y": 40
-          },
-          "id": 77,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "FetchFollower - ResponseQueueTimeMs",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block.\n",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "links": [],
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 16,
-            "y": 40
-          },
-          "id": 78,
-          "options": {
-            "legend": {
-              "calcs": [
-                "mean",
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.1.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "D"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "E"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
-              "hide": false,
-              "legendFormat": "{{instance}}",
-              "refId": "F"
-            }
-          ],
-          "title": "FetchFollower - ResponseSendTimeMs",
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "targets": [
         {
           "datasource": {
@@ -6452,6 +5767,759 @@
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 158
+      },
+      "id": 74,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RequestQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "FetchFollower - RequestQueueTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 158
+      },
+      "id": 75,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"LocalTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "FetchFollower - LocalTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 167
+      },
+      "id": 76,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"RemoteTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "FetchFollower - RemoteTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 167
+      },
+      "id": 77,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseQueueTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "FetchFollower - ResponseQueueTimeMs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block.\n",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 167
+      },
+      "id": 78,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_50thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_75thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_95thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_98thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_999thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "expr": "kafka_network_RequestMetrics_99thPercentile{name=\"ResponseSendTimeMs\",job=\"kafka-broker\",env=\"$env\",instance=~\"$instance\",request=\"FetchFollower\"}",
+          "hide": false,
+          "legendFormat": "{{instance}}",
+          "refId": "F"
+        }
+      ],
+      "title": "FetchFollower - ResponseSendTimeMs",
+      "type": "timeseries"
+    },
+    {
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
@@ -6461,7 +6529,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 140
+        "y": 176
       },
       "id": 102,
       "panels": [],
@@ -6541,7 +6609,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 141
+        "y": 177
       },
       "id": 98,
       "options": {
@@ -6640,7 +6708,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 141
+        "y": 177
       },
       "id": 100,
       "options": {
@@ -6739,7 +6807,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 149
+        "y": 185
       },
       "id": 104,
       "options": {
@@ -6838,7 +6906,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 149
+        "y": 185
       },
       "id": 106,
       "options": {
@@ -6937,7 +7005,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 157
+        "y": 193
       },
       "id": 108,
       "options": {
@@ -7036,7 +7104,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 157
+        "y": 193
       },
       "id": 110,
       "options": {
@@ -7137,7 +7205,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 165
+        "y": 201
       },
       "id": 112,
       "options": {
@@ -7236,7 +7304,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 165
+        "y": 201
       },
       "id": 114,
       "options": {
@@ -7281,7 +7349,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 173
+        "y": 209
       },
       "id": 120,
       "panels": [],
@@ -7362,7 +7430,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 174
+        "y": 210
       },
       "id": 116,
       "options": {
@@ -7463,7 +7531,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 174
+        "y": 210
       },
       "id": 118,
       "options": {
@@ -7607,7 +7675,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 182
+        "y": 218
       },
       "id": 128,
       "legend": {
@@ -7706,7 +7774,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 190
+        "y": 226
       },
       "id": 46,
       "panels": [],
@@ -7788,7 +7856,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 191
+        "y": 227
       },
       "id": 48,
       "options": {
@@ -7890,7 +7958,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 191
+        "y": 227
       },
       "id": 51,
       "options": {
@@ -7954,7 +8022,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 191
+        "y": 227
       },
       "id": 96,
       "links": [],
@@ -8169,6 +8237,6 @@
   "timezone": "",
   "title": "MSK Kafka cluster",
   "uid": "LYXrrYwZz",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

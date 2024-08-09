@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -61,7 +61,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 6,
         "x": 0,
         "y": 1
@@ -127,7 +127,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 6,
         "x": 6,
         "y": 1
@@ -226,7 +226,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 12,
         "x": 12,
         "y": 1
@@ -340,10 +340,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 10
       },
       "id": 11,
       "options": {
@@ -426,246 +426,7 @@
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 8
-      },
-      "id": 7,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "10.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(kafka_server_ReplicaManager_Value{job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", cluster=~\"$cluster\", name=\"LeaderCount\"}) * $GB_Month",
-          "fullMetaSearch": false,
-          "hide": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.816",
-          "hide": false,
-          "refId": "Cost -",
-          "type": "math"
-        }
-      ],
-      "title": "Instance Charges Monthly",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "currencyUSD"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
-      },
-      "id": 10,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\", partition=~\"$partition\"}[1h])) / $convert_to_GB / $GB_Month",
-          "fullMetaSearch": false,
-          "hide": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{topic}} @ partition - {{Partition}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 0.10",
-          "hide": false,
-          "refId": "Cost -",
-          "type": "math"
-        }
-      ],
-      "title": "Storage Usage Per Partition",
-      "type": "timeseries"
-    },
-    {
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 24
-      },
-      "id": 6,
-      "title": "Instance",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -721,10 +482,135 @@
         "overrides": []
       },
       "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\", partition=~\"$partition\"}[1h])) / $convert_to_GB / $GB_Month",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{topic}} @ partition - {{Partition}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$A * 0.10",
+          "hide": false,
+          "refId": "Cost -",
+          "type": "math"
+        }
+      ],
+      "title": "Storage Usage Per Partition",
+      "type": "timeseries"
+    },
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 6,
+      "title": "Instance",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 23
       },
       "id": 4,
       "options": {
@@ -818,7 +704,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -834,7 +721,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 23
       },
       "id": 5,
       "options": {
@@ -885,7 +772,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 31
       },
       "id": 3,
       "title": "Topic",
@@ -939,7 +826,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -955,7 +843,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 34
+        "y": 32
       },
       "id": 2,
       "options": {
@@ -1045,7 +933,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1061,7 +950,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 34
+        "y": 32
       },
       "id": 1,
       "options": {
@@ -1418,6 +1307,6 @@
   "timezone": "",
   "title": "Cost Center",
   "uid": "ba796e30-e406-42b6-8f21-8ff3793fece2",
-  "version": 3,
+  "version": 2,
   "weekStart": ""
 }

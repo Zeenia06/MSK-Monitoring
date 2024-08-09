@@ -438,7 +438,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "decgbytes"
         },
         "overrides": []
       },
@@ -472,22 +472,11 @@
           },
           "editorMode": "code",
           "expr": "sum by(topic, partition) (rate(kafka_log_Log_Value{name=\"Size\", job=\"kafka-broker\", env=\"dev\", instance=~\"$instance\", topic=~\"$topic\",partition=~\"$partition\"}[1h])) / $convert_to_GB / $GB_Month",
-          "hide": true,
+          "hide": false,
           "instant": false,
           "legendFormat": "{{topic}} @ partition-{{partition}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A * 100",
-          "hide": false,
-          "refId": "B",
-          "type": "math"
         }
       ],
       "title": "Storage Usage Per Partition",
@@ -518,7 +507,7 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": true,
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -601,7 +590,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "100 - kafka_server_KafkaRequestHandlerPool_Count{name=\"RequestHandlerAvgIdlePercent\", job=\"kafka-broker\", env=~\"$env\", instance=~\"$instance\"}/10000000",
+          "expr": "100 - kafka_server_KafkaRequestHandlerPool_Count{name=\"RequestHandlerAvgIdlePercent\", job=\"kafka-broker\", env=~\"$env\", instance=~\"$instance\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -1046,6 +1035,6 @@
   "timezone": "",
   "title": "Cluster Utilization",
   "uid": "fdbc3a50-deb0-4542-8097-8e21ae5c4831",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
