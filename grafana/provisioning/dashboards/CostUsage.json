@@ -252,13 +252,17 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "code",
-          "expr": "sum(rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB / $GB_Month",
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "sum by(instance) (rate(kafka_server_BrokerTopicMetrics_Count{name=\"BytesOutPerSec\", job=\"kafka-broker\", env=\"$env\", cluster=\"$cluster\"}[1m])) / $convert_to_GB / $GB_Month",
+          "fullMetaSearch": false,
           "hide": true,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Bytes Out",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         },
         {
           "datasource": {
@@ -809,6 +813,7 @@
             }
           },
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -929,6 +934,7 @@
             }
           },
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -940,7 +946,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -1112,10 +1119,9 @@
     "list": [
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "dev",
+          "value": "dev"
         },
         "datasource": {
           "type": "prometheus",
@@ -1412,6 +1418,6 @@
   "timezone": "",
   "title": "Cost Center",
   "uid": "ba796e30-e406-42b6-8f21-8ff3793fece2",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

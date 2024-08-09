@@ -561,7 +561,7 @@
             "type": "__expr__",
             "uid": "__expr__"
           },
-          "expression": "(300*1.07374) - $TotalStorage",
+          "expression": "($total_storage*1.07374) - $TotalStorage",
           "hide": false,
           "refId": "Remaining Storage",
           "type": "math"
@@ -815,8 +815,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -943,8 +942,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1034,8 +1032,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1250,8 +1247,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1352,8 +1348,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2012,11 +2007,9 @@
         "current": {
           "selected": true,
           "text": [
-            "client-1",
             "msk-client-1"
           ],
           "value": [
-            "client-1",
             "msk-client-1"
           ]
         },
@@ -2046,13 +2039,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "msk-client-1"
-          ],
-          "value": [
-            "msk-client-1"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -2174,6 +2163,26 @@
         "query": "1",
         "skipUrlSync": false,
         "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "1",
+          "value": "1"
+        },
+        "hide": 0,
+        "label": "Total Storage",
+        "name": "total_storage",
+        "options": [
+          {
+            "selected": true,
+            "text": "1",
+            "value": "1"
+          }
+        ],
+        "query": "1",
+        "skipUrlSync": false,
+        "type": "textbox"
       }
     ]
   },
@@ -2185,6 +2194,6 @@
   "timezone": "",
   "title": "MSK_ResourceUsage",
   "uid": "d6e43110-cfe7-46d6-8343-e9f93fd8091a",
-  "version": 3,
+  "version": 2,
   "weekStart": ""
 }
